@@ -1,0 +1,45 @@
+Affluences - Devops
+Contexte
+Affluences dispose d’une application révolutionnaire de suivi de tâches (aussi appelée
+todo-list) mais les développeurs qui travaillent sur ce projet rencontrent des difficultés du fait
+que l’environnement d’exécution varie d’un poste à l’autre. Pour limiter la friction et simplifier
+les déploiements Affluences souhaite pouvoir déployer le projet dans un container Docker.
+En plus de cela, l’entreprise manque de visibilité sur les performances et la stabilité de
+l’application en production et a par conséquent mis ses meilleurs éléments sur le sujet pour
+ajouter des metrics Prometheus au projet mais, ne dispose pas encore d’un moyen de les
+visualiser.
+
+Objectifs
+P0
+Déployer le projet et tenter de lancer les tests (commandes dans le README). Tu dois
+identifier et corriger les tests en question. Une fois les tests corrigés, tu dois écrire un
+Dockerfile le plus optimisé possible pour lancer le projet dans un container.
+
+P1
+Le projet maintenant réparé et empaqueté dans un container Docker, il est maintenant
+temps de visualiser les metrics Prometheus. Pour cela, tu dois écrire un fichier
+docker-compose.yml contenant le projet todo-list, une instance Grafana et un serveur
+Prometheus. Tu dois ensuite pouvoir lancer le fichier compose pour que Prometheus
+collecte les metrics de l’api et que Grafana les affiche dans un dashboard.
+Remarques : un dashboard Grafana préfabriqué se trouve dans le dossier metrics. Un fichier
+de configuration Prometheus (incomplet) est également présent dans ce dossier.
+
+P2
+La touche finale : tu dois désormais écrire un fichier gitlab-ci.yml pour intégrer le projet à
+notre pipeline CI/CD. La pipeline doit au moins être en mesure de réaliser les tâches
+suivantes :
+- Lancer la suite de tests
+- Compiler le Dockerfile pour en faire une image Docker (pas besoin de push)
+Remarques : Le fichier gitlab-ci.yml ne sera pas exécuté donc il est préférable de se
+concentrer sur la logique plus que sur la syntaxe.
+
+Contraintes techniques
+●
+●
+
+Tu peux utiliser autant de documentation en ligne (Gitlab, Grafana, Prometheus, Jest
+etc.) que tu le souhaites.
+Les problématiques étant relativement indépendantes les unes des autres, en cas de
+blocage tu peux passer à un autre objectif.
+
+
