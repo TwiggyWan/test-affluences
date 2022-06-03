@@ -56,7 +56,7 @@ describe('TaskService', () => {
         it('Should update a task', async () => {
             await repository.create(getAllTasks.toCreate[0]);
             const task = await service.updateTask(new TaskParams(1), getAllTasks.toCreate[1]);
-            expect(task).toEqual({ ...getAllTasks.expected[1], taskId: 2 });
+            expect(task).toEqual({ ...getAllTasks.expected[1], taskId: 1 });
         });
 
         it('Should throw an error if task is not found', async () => {
@@ -70,7 +70,7 @@ describe('TaskService', () => {
         // TODO: Should be fixed
         it('Should delete a task', async () => {
             await repository.create(getAllTasks.toCreate[0]);
-            await service.deleteTask(new TaskParams(13));
+            await service.deleteTask(new TaskParams(1));
             const tasks = await service.getAllTasks();
             expect(tasks).toEqual([]);
         });
@@ -123,7 +123,7 @@ describe('TaskService', () => {
 
         // TODO: Should be fixed
         it('Should throw an error if task id is not a number', () => {
-            expect(() => TaskParams.fromParams({ taskId: 'NaN' })).toThrowError(NotFoundError);
+            expect(() => TaskParams.fromParams({ taskId: 'NaN' })).toThrowError(BadRequestError);
             expect(() => TaskParams.fromParams({ taskId: 'NaN' })).toThrowError(
                 new BadRequestError('Invalid taskId param')
             );
