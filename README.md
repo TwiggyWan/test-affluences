@@ -31,7 +31,8 @@ This app can expose Prometheus metrics when setting the following environment va
 The metrics will be available at `/metrics` when authenticated using the header `Authorization: Bearer <your token>`
 
 ## Project setup
-### Installation
+### Native setup
+#### Installation
 
 Use the package manager [npm](https://nodejs.org/en/download/), [yarn](https://yarnpkg.com/getting-started/install) or [pnpm](https://pnpm.io/fr/installation) to install dependencies.
 
@@ -39,11 +40,11 @@ Use the package manager [npm](https://nodejs.org/en/download/), [yarn](https://y
 [npm|yarn|pnpm] install
 ```
 
-### Environment variables
+#### Environment variables
 
 There is a .env file at the root of the file, do not forget to edit the values
 
-### Usage
+#### Usage
 
 ```bash
 # Run in watch mode
@@ -54,6 +55,14 @@ There is a .env file at the root of the file, do not forget to edit the values
 [npm|yarn|pnpm] run start
 # Run the test suite
 [npm|yarn|pnpm] run test
+```
+
+### Docker setup
+This will check dockerfile syntax, build the project, and make a production image based on alpine.
+
+```bash
+IMAGENAME="$my-image-name" ./build_dockerfile.sh
+docker run --rm -d -p 3000:3000 "$my-image-name" 
 ```
 
 ## License
