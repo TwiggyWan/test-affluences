@@ -1,0 +1,6 @@
+coverage
+dist
+metrics
+node_modules
+.DS_Store
+.env
