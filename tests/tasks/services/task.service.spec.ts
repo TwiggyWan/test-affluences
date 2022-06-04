@@ -52,7 +52,6 @@ describe('TaskService', () => {
         });
     });
     describe('Update task', () => {
-        // TODO: Should be fixed
         it('Should update a task', async () => {
             await repository.create(getAllTasks.toCreate[0]);
             const task = await service.updateTask(new TaskParams(1), getAllTasks.toCreate[1]);
@@ -67,7 +66,6 @@ describe('TaskService', () => {
     });
 
     describe('Delete task', () => {
-        // TODO: Should be fixed
         it('Should delete a task', async () => {
             await repository.create(getAllTasks.toCreate[0]);
             await service.deleteTask(new TaskParams(1));
@@ -121,7 +119,6 @@ describe('TaskService', () => {
             expect(() => TaskParams.fromParams({})).toThrowError(new BadRequestError('Invalid taskId param'));
         });
 
-        // TODO: Should be fixed
         it('Should throw an error if task id is not a number', () => {
             expect(() => TaskParams.fromParams({ taskId: 'NaN' })).toThrowError(BadRequestError);
             expect(() => TaskParams.fromParams({ taskId: 'NaN' })).toThrowError(
