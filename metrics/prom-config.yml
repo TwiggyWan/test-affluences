@@ -1,7 +1,11 @@
 global:
-  scrape_interval:     5s
-  evaluation_interval: 5s
-
+    scrape_interval: 5s
+    evaluation_interval: 5s
+    scrape_timeout: 5s
 scrape_configs:
-  - job_name: 'todo-list'
-    # complete me
+    - job_name: "todo-list"
+      static_configs:
+          - targets: ["localhost:3999"]
+      authorization:
+          type: "Bearer"
+          credentials: "my_token"
