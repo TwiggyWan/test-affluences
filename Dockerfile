@@ -30,8 +30,18 @@ WORKDIR /src/app
 COPY --from=build_stage /src/app/node_modules/ ./node_modules
 COPY --from=build_stage /src/app/dist/ ./dist
 
+# dotenv is supposed to be a dev dependency.
+# this dockerfile is for production
+# do not rely on dotenv to provide the values : it's up to the user to do so when making the image.
 ARG listeningPort=3000
 ENV PORT=$listeningPort
 EXPOSE $PORT
 
+ARG enableMetrics=false
+ENV ENABLE_METRICS=$enableMetrics
+
+ARG promToken="default_value"
+ENV PROM_TOKEN=$promToken
+
+# I could have just not cared and adapted the CMD to use node -r dotenv/config
 CMD ["node", "./dist/index.js"]
