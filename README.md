@@ -62,8 +62,12 @@ This will check dockerfile syntax, build the project, and make a production imag
 
 ```bash
 IMAGENAME="$my-image-name" ./build_dockerfile.sh
-docker run --rm -d -p 3000:3000 "$my-image-name" 
+docker run --rm -d -p $PORT:$PORT "$my-image-name"
 ```
+find `$PORT` value in `.env` .
+
+
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

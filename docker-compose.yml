@@ -1,0 +1,21 @@
+# i have docker 18.09.1 and compose 1.21.0
+# https://docs.docker.com/compose/compose-file/compose-versioning/#compatibility-matrix
+version: "3.6"
+services:
+    todo-list:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                listeningPort: 3999
+                enableMetrics: "true"
+                promToken: "my_token"
+        ports:
+            - "3999:3999"
+
+    prometheus:
+        image: prom/prometheus:latest
+        ports:
+            - "9090:9090"
+        volumes:
+            - ./metrics/prom-config.yml:/etc/prometheus/prometheus.yml
