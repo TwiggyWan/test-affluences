@@ -5,7 +5,11 @@ scrape_configs:
     - job_name: "todo-list"
       metrics_path: "/metrics"
       static_configs:
-          - targets: ["host.docker.internal:3999"]
+          # now it says the target is UP
+          # i still dont see the data
+          # it's a trash solution to specify here the container name..
+          # i want to tell only the port here...
+          - targets: ["test-devops-main_todo-list_1:3999"]
       authorization:
           type: "Bearer"
           credentials: "my_token"
